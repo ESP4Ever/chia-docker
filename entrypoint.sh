@@ -12,7 +12,7 @@ else
   chia keys add -f ${keys}
 fi
 
-if [[ ! "$(ls -A /plots)" ]]; then
+if [[ ! "$(ls /plots/*.plot)" ]]; then
   echo "Plots directory appears to be empty and you have not specified another, try mounting a plot directory with the docker -v command "
 fi
 
