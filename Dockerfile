@@ -39,10 +39,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   nfs-common \
   python-is-python3 \
   vim \
-  tzdata \
-  && rm -rf /var/lib/apt/lists/*
+  tzdata
 
-ARG CHIA_BRANCH=main
+ARG CHIA_BRANCH=latest
 RUN echo "cloning ${CHIA_BRANCH}" \
 && git clone --branch ${CHIA_BRANCH} https://github.com/Chia-Network/chia-blockchain.git \
 && cd chia-blockchain \
