@@ -43,14 +43,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   unzip \
   vim \
   wget \
-  && echo "cloning ${CHIA_BRANCH}" \
   && git clone --branch ${CHIA_BRANCH} https://github.com/Chia-Network/chia-blockchain.git \
   && cd chia-blockchain \
   && git submodule update --init mozilla-ca \
+  && rm -rf /var/lib/apt/lists/* \
   && chmod +x install.sh \
-  && /usr/bin/sh ./install.sh \
-  && rm -rf /var/lib/apt/lists/*
-
+  && /usr/bin/sh ./install.sh
 
 WORKDIR /chia-blockchain
 ADD ./entrypoint.sh entrypoint.sh
