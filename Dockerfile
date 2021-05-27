@@ -43,8 +43,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   tzdata \
   && rm -rf /var/lib/apt/lists/*
 
-RUN echo "cloning ${BRANCH}"
-RUN git clone --branch ${BRANCH} https://github.com/Chia-Network/chia-blockchain.git \
+RUN echo "cloning ${BRANCH}" \
+&& git clone --branch ${BRANCH} https://github.com/Chia-Network/chia-blockchain.git \
 && cd chia-blockchain \
 && git submodule update --init mozilla-ca \
 && chmod +x install.sh \
