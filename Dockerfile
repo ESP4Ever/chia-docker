@@ -13,8 +13,7 @@ ENV keys="generate" \
   farmer_address="null" \
   farmer_port="null" \
   testnet="false" \
-  full_node_port="null" \
-  BRANCH=latest
+  full_node_port="null"
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
@@ -43,8 +42,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   tzdata \
   && rm -rf /var/lib/apt/lists/*
 
-RUN echo "cloning ${BRANCH}" \
-&& git clone --branch ${BRANCH} https://github.com/Chia-Network/chia-blockchain.git \
+ARG CHIA_BRANCH=main
+RUN echo "cloning ${CHIA_BRANCH}" \
+&& git clone --branch ${CHIA_BRANCH} https://github.com/Chia-Network/chia-blockchain.git \
 && cd chia-blockchain \
 && git submodule update --init mozilla-ca \
 && chmod +x install.sh \
