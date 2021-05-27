@@ -40,7 +40,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   nfs-common \
   python-is-python3 \
   vim \
-  tzdata
+  tzdata \
   && rm -rf /var/lib/apt/lists/*
 
 RUN echo "cloning ${BRANCH}"
