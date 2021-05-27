@@ -20,37 +20,37 @@ ENV keys="generate" \
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-  curl \
-  jq \
-  python3 \
-  ansible \
-  tar \
-  bash \
-  ca-certificates \
-  git \
-  openssl \
-  unzip \
-  wget \
-  python3-pip \
-  sudo \
   acl \
-  build-essential \
-  python3-dev \
-  python3.8-venv \
-  python3.8-distutils \
+  ansible \
   apt \
+  bash \
+  build-essential \
+  ca-certificates \
+  curl \
+  git \
+  jq \
   nfs-common \
+  openssl \
   python-is-python3 \
-  vim \
+  python3 \
+  python3-dev \
+  python3-pip \
+  python3.8-distutils \
+  python3.8-venv \
+  sudo \
+  tar \
   tzdata \
+  unzip \
+  vim \
+  wget \
+  && echo "cloning ${CHIA_BRANCH}" \
+  && git clone --branch ${CHIA_BRANCH} https://github.com/Chia-Network/chia-blockchain.git \
+  && cd chia-blockchain \
+  && git submodule update --init mozilla-ca \
+  && chmod +x install.sh \
+  && /usr/bin/sh ./install.sh \
+  && rm -rf /var/lib/apt/lists/*
 
-&& echo "cloning ${CHIA_BRANCH}" \
-&& git clone --branch ${CHIA_BRANCH} https://github.com/Chia-Network/chia-blockchain.git \
-&& cd chia-blockchain \
-&& git submodule update --init mozilla-ca \
-&& chmod +x install.sh \
-&& /usr/bin/sh ./install.sh \
-&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /chia-blockchain
 ADD ./entrypoint.sh entrypoint.sh

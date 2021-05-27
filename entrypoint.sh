@@ -2,6 +2,7 @@ cd /chia-blockchain
 
 . ./activate
 
+# chia init -c [directory] on your harvester, where [directory] is the copy of your main machine /ca directory
 chia init
 
 if [[ ${keys} == "generate" ]]; then
