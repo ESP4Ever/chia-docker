@@ -1,6 +1,5 @@
-ARG CHIA_BRANCH=latest \
-  UBUNTU_BRANCH=latest
-FROM ubuntu:${UBUNTU_BRANCH}
+ARG CHIA_BRANCH=latest
+FROM ubuntu:latest
 
 EXPOSE 8555
 EXPOSE 8444
@@ -8,7 +7,6 @@ EXPOSE 8444
 # chia start {all | node | harvester | farmer | farmer-no-wallet | farmer-only | timelord
 # timelord-only | timelord-launcher-only | wallet | wallet-only | introducer | simulator}
 
-ARG CHIA_BRANCH=latest
 ENV keys="generate" \
   harvester="false" \
   farmer="false" \
