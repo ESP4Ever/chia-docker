@@ -1,4 +1,3 @@
-ARG CHIA_BRANCH=latest
 FROM ubuntu:latest
 
 EXPOSE 8555
@@ -6,15 +5,17 @@ EXPOSE 8444
 
 # chia start {all | node | harvester | farmer | farmer-no-wallet | farmer-only | timelord
 # timelord-only | timelord-launcher-only | wallet | wallet-only | introducer | simulator}
+# keys {mnemonic | new | file | ca} - my proposal
 
-ENV keys="generate" \
+ENV keys="generate" \ 
   harvester="false" \
   farmer="false" \
   plots_dir="/plots" \
   farmer_address="null" \
   farmer_port="null" \
   testnet="false" \
-  full_node_port="null"
+  full_node_port="8555" \
+  CHIA_BRANCH=latest
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
