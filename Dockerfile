@@ -8,14 +8,13 @@ EXPOSE 8444
 # keys {mnemonic | new | file | ca} - my proposal
 
 ENV keys="generate" \ 
-  harvester="false" \
-  farmer="false" \
-  plots_dir="/plots" \
+  mode="node" \
+  plots_dir="" \
   farmer_address="null" \
   farmer_port="null" \
   testnet="false" \
   full_node_port="8555" \
-  CHIA_BRANCH=latest
+  CHIA_BRANCH=main
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
