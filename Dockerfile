@@ -40,7 +40,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   unzip \
   vim \
   wget \
-  && git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules \
+  && git clone --branch latest https://github.com/Chia-Network/chia-blockchain.git \
   && cd chia-blockchain \
   && git submodule update --init mozilla-ca \
   && chmod +x install.sh \
