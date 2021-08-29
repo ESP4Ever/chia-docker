@@ -49,5 +49,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
 
 WORKDIR /chia-blockchain
 ADD ./entrypoint.sh entrypoint.sh
+ADD ./update.sh update.sh
 
 ENTRYPOINT ["bash", "./entrypoint.sh"]
