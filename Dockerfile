@@ -13,8 +13,7 @@ ENV keys="generate" \
   farmer_address="null" \
   farmer_port="null" \
   testnet="false" \
-  full_node_port="8555" \
-  CHIA_BRANCH=main
+  full_node_port="8555"
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
