@@ -40,7 +40,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   unzip \
   vim \
   wget \
-  && git clone --branch latest https://github.com/Chia-Network/chia-blockchain.git \
+  && git clone --branch main https://github.com/Chia-Network/chia-blockchain.git \
   && cd chia-blockchain \
   && git submodule update --init mozilla-ca \
   && chmod +x install.sh \
@@ -49,5 +49,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
 WORKDIR /chia-blockchain
 ADD ./entrypoint.sh entrypoint.sh
 ADD ./update.sh update.sh
+RUN chmod +x update.sh
 
 ENTRYPOINT ["bash", "./entrypoint.sh"]
