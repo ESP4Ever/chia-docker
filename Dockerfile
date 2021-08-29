@@ -44,7 +44,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   && cd chia-blockchain \
   && git submodule update --init mozilla-ca \
   && chmod +x install.sh \
-  && chmod +x update.sh \
   && /usr/bin/sh ./install.sh
 
 WORKDIR /chia-blockchain
