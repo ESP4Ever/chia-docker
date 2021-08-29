@@ -7,11 +7,10 @@ EXPOSE 8444
 # timelord-only | timelord-launcher-only | wallet | wallet-only | introducer | simulator}
 # keys {mnemonic | new | file | ca} - my proposal
 
-ENV keys="generate" \ 
-  mode="node" \
+ENV mode="harvester" \
   plots_dir="" \
   farmer_address="null" \
-  farmer_port="null" \
+  farmer_port="8447" \
   testnet="false" \
   full_node_port="8555"
 
@@ -40,7 +39,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
   unzip \
   vim \
   wget \
-  && git clone --branch main https://github.com/Chia-Network/chia-blockchain.git \
+  && git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules \
   && cd chia-blockchain \
   && git submodule update --init mozilla-ca \
   && chmod +x install.sh \
