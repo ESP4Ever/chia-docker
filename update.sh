@@ -1,12 +1,10 @@
 #!/bin/bash
-exec >/dev/null # 2>&1
+exec >/dev/null 2>&1
+
 cd chia-blockchain
 . ./activate
-
-exec >/dev/tty
-echo -n "Current version: "
-chia version
-exec >/dev/null
+ver=$(chia version)
+echo "Current version: $ver" >/dev/tty
 
 chia stop -d all
 deactivate
@@ -17,7 +15,5 @@ sh install.sh
 . ./activate
 chia init
 
-exec >/dev/tty
-echo -n "Updated to version: "
-chia version
-exec >/dev/null
+ver=$(chia version)
+echo "Updated to version: $ver" >/dev/tty
