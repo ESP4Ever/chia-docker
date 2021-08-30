@@ -1,6 +1,12 @@
 #!/bin/bash
+exec >/dev/null # 2>&1
 cd chia-blockchain
 . ./activate
+
+exec >1
+chia version
+exec >/dev/null
+
 chia stop -d all
 deactivate
 git fetch
