@@ -3,7 +3,8 @@ exec >/dev/null # 2>&1
 cd chia-blockchain
 . ./activate
 
-exec >1
+exec >/dev/tty
+echo -n "Current version: "
 chia version
 exec >/dev/null
 
@@ -15,3 +16,8 @@ git reset --hard FETCH_HEAD --recurse-submodules
 sh install.sh
 . ./activate
 chia init
+
+exec >/dev/tty
+echo -n "Updated to version: "
+chia version
+exec >/dev/null
